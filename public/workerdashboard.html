@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Worker Panel</title>
+    <link rel="stylesheet" href="userdashboard.css">
+</head>
+<body>
+    <div class="header">
+        <h1>Worker Panel</h1>
+    </div>
+    <div class="container">
+        <div class="card">
+            <h2>Recently Posted Jobs</h2>
+            <form method="get" action="/listalljobs">
+            <button>View Jobs</button></form>
+        </div>
+        <div class="card">
+            <form method="POST" action="/finalised">
+            <h2>Finalized Jobs</h2>
+            <button>View</button></form>
+        </div>
+    </div>
+
+
+</body>
+</html>

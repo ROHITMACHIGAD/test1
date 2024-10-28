@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Applicants List</title>
+    <link rel="stylesheet" href="applicants.css">
+    <style>
+        .star {
+            font-size: 1.5em; /* Adjust size as needed */
+            color: gold; /* Color for filled stars */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Applicants List</h1>
+        
+        <!-- Filter Dropdown -->
+        <form action="/listapplicants" method="POST" style="margin-bottom: 20px;">
+            <label for="filter">Filter by Rating:</label>
+            <select name="filter" id="filter">
+                <option value="highest">Highest to Lowest</option>
+                <option value="lowest">Lowest to Highest</option>
+            </select>
+            <button type="submit">Apply</button>
+        </form>
+                      
+        <% if (applicants.length === 0) { %>
+            <p>No applicants found.</p>
+        <% } else { %>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Type of Job</th>
+                        <th>Timing</th>
+                        <th>Work Pay</th>
+                        <th>Name</th>
+                        <th>Rating</th> <!-- Column for Rating -->
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% applicants.forEach((applicant, index) => { %>
+                        <tr>
+                            <td><%= applicant.typeofjob %></td>
+                            <td><%= applicant.timing %></td>
+                            <td><%= applicant.workpay %></td>
+                            <td><%= applicant.name %></td>
+                            <td>
+                                <% if (applicant.rating !== null) { %>
+                                    <div>
+                                        <% for (let i = 1; i <= 5; i++) { %>
+                                            <span class="star"><%= i <= applicant.rating ? '★' : '☆' %></span>
+                                        <% } %>
+                                    </div>
+                                <% } else { %>
+                                    <span>No rating</span>
+                                <% } %>
+                            </td>
+                            <td>
+                                <form action="/approve" method="POST" style="display: inline;">
+                                    <input type="hidden" name="wkphno" value="<%= applicant.wkphno %>">
+                                    <button type="submit">Approve</button>
+                                </form>
+                                <form action="/reject" method="POST" style="display: inline;">
+                                    <input type="hidden" name="wkphno" value="<%= applicant.wkphno %>">
+                                    <button type="submit">Reject</button>
+                                </form>
+                            </td>
+                        </tr>
+                    <% }) %>
+                </tbody>
+                
+            </table>
+        <% } %>
+    </div>
+</body>
+</html>

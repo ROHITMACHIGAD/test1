@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job List</title>
+    <link rel="stylesheet" href="joblist.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Job Listings</h1>
+        <table>
+            <thead>
+                <tr>
+                    
+                    <th>Type of Job</th>
+                    <th>Timing</th>
+                    <th>Location</th>
+                    <th>Work Pay</th>
+                   
+                </tr>
+            </thead>
+            <tbody>
+                <% jobs.forEach(job => { %>
+                    <tr>
+                        
+                        <td><%= job.typeofjob %></td>
+                        <td><%= job.timing %></td>
+                        <td><%= job.location %></td>
+                        <td><%= job.workpay %></td>
+                     
+                        <td>
+                            <form action="/apply" method="POST">
+                                <input type="hidden" name="jobId" value="<%= job.id %>">
+                                <input type="hidden" name="userPhno" value="<%= userPhno %>">
+                              <button type="submit">Apply</button>
+                            </form>
+                            
+                            
+                        </td>
+                    </tr>
+                <% }) %>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

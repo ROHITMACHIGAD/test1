@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Finalized Jobs</title>
+    <link rel="stylesheet" href="finalisedjob.css">
+</head>
+<body>
+    <h1>Finalized Jobs</h1>
+    <% if (jobs.length === 0) { %>
+        <p>No finalized jobs found.</p>
+    <% } else { %>
+        <table>
+            <thead>
+                <tr>
+                    <th>Type of Job</th>
+                    <th>Timing</th>
+                    <th>Location</th>
+                    <th>Work Pay</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% jobs.forEach(job => { %>
+                    <tr>
+                        <td><%= job.typeofjob %></td>
+                        <td><%= job.timing %></td>
+                        <td><%= job.location %></td>
+                        <td><%= job.workpay %></td>
+                    </tr>
+                <% }) %>
+            </tbody>
+        </table>
+    <% } %>
+</body>
+</html>

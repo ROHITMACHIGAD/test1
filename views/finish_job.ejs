@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Finish Jobs</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+        }
+        h1 {
+            text-align: center;
+            color: #007bff;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            background: #fff;
+            margin: 10px 0;
+            padding: 15px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        strong {
+            display: block;
+            margin-bottom: 5px;
+        }
+        button {
+            background-color: #28a745;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #218838;
+        }
+        p {
+            text-align: center;
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+    <h1>Your Jobs</h1>
+    <% if (jobs.length > 0) { %>
+        <ul>
+            <% jobs.forEach(job => { %>
+                <li class="list-group-item">
+                    <strong>Type of Job:</strong> <%= job.typeofjob %><br>
+                    <strong>Timing:</strong> <%= job.timing %><br>
+                    <strong>Location:</strong> <%= job.location %><br>
+                    <strong>Work Pay:</strong> $<%= typeof job.workpay === 'number' ? job.workpay.toFixed(2) : 'N/A' %>
+                    <form action="/finishjob" method="POST" class="mt-3">
+                        <input type="hidden" name="jobId" value="<%= job.id %>">
+                        <input type="hidden" name="usphno" value="<%= job.usphno %>">
+                        <button type="submit" class="btn btn-success">Finish Job</button>
+                    </form>
+                </li>
+                
+            <% }); %>
+        </ul>
+    <% } else { %>
+        <p>No jobs found for this user.</p>
+    <% } %>
+</body>
+</html>

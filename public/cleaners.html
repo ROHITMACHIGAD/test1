@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Details - Cleaners</title>
+    <link rel="stylesheet" href="jobdetails.css">
+</head>
+<body>
+    
+    <div class="header">
+        <h1>Job Details - Cleaners</h1>
+    </div>
+    
+    <div class="container">
+        <form class="job-form" method="POST" action="/submitjob">
+            <div class="form-group">
+                <label for="usphno">Your Phone Number</label>
+                <input type="text" id="usphno" name="usphno" placeholder="Enter your phone number" required>
+            </div>
+            <div class="form-group">
+                <label for="job-type">Type of Job</label>
+                <input type="text" id="job-type" name="typeofjob" value="Cleaners" readonly required>
+            </div>
+            <div class="form-group">
+                <label for="timing">Timing</label>
+                <input type="text" id="timing" name="timing" placeholder="Enter job timing" required>
+            </div>
+            <div class="form-group">
+                <label for="location">Location</label>
+                <input type="text" id="location" name="location" placeholder="Enter job location" required>
+            </div>
+            <div class="form-group">
+                <label for="work-pay">Work Pay</label>
+                <input type="number" id="work-pay" name="workpay" placeholder="Enter pay amount" required>
+            </div>
+           
+            <button type="submit">Submit Job</button>
+        </form>
+    </div>
+</body>
+</html>
